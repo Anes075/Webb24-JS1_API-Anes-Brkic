@@ -1,5 +1,3 @@
-//https://randomuser.me/api/
-
 let main = document.getElementById('main');
 
 let createUserData = () => {
@@ -16,6 +14,10 @@ let createUserData = () => {
     })
     .then(data => {
 
+        let userPicture = document.createElement('div');
+        userPicture.style.backgroundImage = `url(${data.results[0].picture.large})`;
+        main.appendChild(userPicture);
+
         let gender = data.results[0].gender;
         let email = data.results[0].email;
         let phone = data.results[0].phone;
@@ -24,10 +26,6 @@ let createUserData = () => {
 
         let userCategory = ['First Name: ','Last Name: ', 'Gender: ','Email: ','Phone Number: ']
         let userData = [firstName,lastName,gender,email,phone];
-
-        let userPicture = document.createElement('div');
-        userPicture.style.backgroundImage = `url(${data.results[0].picture.large})`;
-        main.appendChild(userPicture);
 
         for(i = 0; i< userData.length; i++){
 
